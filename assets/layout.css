@@ -1,0 +1,151 @@
+/* Shared typography and alignment across the landing and document pages. */
+.page-glow::before {
+  top: -1061px;
+  right: -792px;
+  width: 2865px;
+  height: 1966px;
+  border-radius: 0;
+  background: url("./page-glow-acee494d74.webp") center / 100% 100% no-repeat;
+  filter: none;
+}
+
+.theme__glow {
+  width: 1363px;
+  height: 1366px;
+  margin-top: -333px;
+  margin-left: -333px;
+  border-radius: 0;
+  background: url("./theme-glow-d68a68ad3a.webp") center / 100% 100% no-repeat;
+  filter: none;
+}
+
+body {
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+}
+
+.section-head__text,
+.features__text,
+.onteam__text {
+  line-height: 1.5;
+}
+
+.onteam__list {
+  position: relative;
+  z-index: 1;
+}
+
+.features__title,
+.onteam__title {
+  line-height: 1.25;
+}
+
+.header__nav,
+.footer__nav {
+  align-items: center;
+}
+
+.nav__link {
+  line-height: 1.4;
+}
+
+.nav__link::before {
+  /* Align the marker with the visible letters rather than the font descenders. */
+  top: calc(50% - .1em);
+}
+
+.footer__nav .nav__link {
+  white-space: nowrap;
+}
+
+.btn {
+  height: auto;
+  min-height: 44px;
+  padding: 10px 20px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.btn__label {
+  display: block;
+  line-height: 1.2;
+  text-box: trim-both cap alphabetic;
+}
+
+.field__label {
+  line-height: 1.4;
+}
+
+.field__input {
+  -webkit-appearance: none;
+  appearance: none;
+  min-width: 0;
+  height: auto;
+  min-height: 48px;
+  padding: 10px 18px;
+  line-height: 1.5;
+}
+
+.modal__submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  min-height: 44px;
+  padding: 10px 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.modal__panel {
+  max-height: calc(100dvh - 32px);
+  overscroll-behavior: contain;
+}
+
+.doc-card {
+  min-width: 0;
+}
+
+.docs {
+  position: relative;
+  z-index: 1;
+}
+
+.doc-card__icon {
+  flex-shrink: 0;
+}
+
+.doc-card__body {
+  width: 100%;
+}
+
+.doc-card__title {
+  line-height: 1.25;
+}
+
+.doc-card__text {
+  line-height: 1.45;
+}
+
+@media (max-width: 767px) {
+  .footer {
+    padding-bottom: calc(32px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .footer__nav {
+    margin-inline-start: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .footer__inner {
+    align-items: center;
+  }
+
+  .doc-card__title {
+    min-height: 2.5em;
+  }
+}

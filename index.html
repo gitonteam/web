@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OnTeam: мессенджер для бизнеса</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon-C19bd5fR.svg">
+  <script type="module">(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))i(r);new MutationObserver(r=>{for(const o of r)if(o.type==="childList")for(const c of o.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&i(c)}).observe(document,{childList:!0,subtree:!0});function n(r){const o={};return r.integrity&&(o.integrity=r.integrity),r.referrerPolicy&&(o.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?o.credentials="include":r.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function i(r){if(r.ep)return;r.ep=!0;const o=n(r);fetch(r.href,o)}})();function k(){document.addEventListener("click",e=>{if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;const t=e.target.closest('a[href^="#"]');if(!t)return;const n=document.getElementById(decodeURIComponent(t.hash.slice(1)));if(n){e.preventDefault(),n.scrollIntoView();try{history.pushState(null,"",t.hash)}catch{}window.dispatchEvent(new HashChangeEvent("hashchange"))}})}const q=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;function b(e){return q.test(e.trim())}function O(e){return new Promise(t=>setTimeout(t,600))}function M(e){const t=e.querySelector("#lead-name"),n=e.querySelector("#lead-email"),i=e.querySelector('button[type="submit"]'),r=e.closest("dialog"),o=r.querySelector(".modal__success"),c=r.querySelector("#modal-success-title"),p=e.querySelector("#lead-email-error"),g=()=>t.value.trim()!==""&&b(n.value),f=()=>{i.getAttribute("aria-busy")!=="true"&&(i.disabled=!g())},m=d=>{p.hidden=!d,d?n.setAttribute("aria-invalid","true"):n.removeAttribute("aria-invalid")},E=()=>n.value.trim()!==""&&!b(n.value);n.addEventListener("blur",()=>m(E())),n.addEventListener("input",()=>{!p.hidden&&!E()&&m(!1)}),e.addEventListener("input",f),e.addEventListener("submit",async d=>{d.preventDefault(),g()&&(i.disabled=!0,i.setAttribute("aria-busy","true"),await O({name:t.value.trim(),email:n.value.trim()}),i.removeAttribute("aria-busy"),e.hidden=!0,o.hidden=!1,c.focus())}),r.addEventListener("close",()=>{o.hidden||(e.reset(),e.hidden=!1,o.hidden=!0,m(!1),f())}),f()}function I(){const e=[...document.querySelectorAll(".legal__toc-link")];if(e.length===0)return;const t=n=>{const i=e.find(r=>r.hash===n)??e[0];e.forEach(r=>r.toggleAttribute("aria-current",r===i)),i.setAttribute("aria-current","true")};t(location.hash),window.addEventListener("hashchange",()=>t(location.hash))}const P='a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])';function L(e,t){if(t.key!=="Tab")return;const n=[...e.querySelectorAll(P)].filter(c=>c.checkVisibility());if(n.length===0)return;const i=n[0],r=n[n.length-1],o=e.contains(document.activeElement);t.shiftKey&&(document.activeElement===i||!o)?(t.preventDefault(),r.focus()):!t.shiftKey&&(document.activeElement===r||!o)&&(t.preventDefault(),i.focus())}let u=0;function w(){if(u===0){const e=document.documentElement;e.style.setProperty("--scrollbar-width",`${window.innerWidth-e.clientWidth}px`),e.classList.add("is-scroll-locked")}u+=1}function A(){if(u!==0&&(u-=1,u===0)){const e=document.documentElement;e.classList.remove("is-scroll-locked"),e.style.removeProperty("--scrollbar-width")}}const F="(min-width: 1280px)";let s,l;const S=()=>[...document.body.children].filter(e=>e!==s&&e.tagName!=="DIALOG"&&e.tagName!=="SCRIPT");function y(){return!!(s&&!s.hidden)}function K(){!s||y()||(s.hidden=!1,l?.setAttribute("aria-expanded","true"),S().forEach(e=>e.setAttribute("inert","")),w(),s.querySelector(".menu__close")?.focus())}function a({restoreFocus:e=!0}={}){y()&&(s.hidden=!0,l?.setAttribute("aria-expanded","false"),S().forEach(t=>t.removeAttribute("inert")),A(),e&&l?.focus())}function B(){s=document.getElementById("mobile-menu"),l=document.querySelector("[data-menu-open]"),!(!s||!l)&&(l.addEventListener("click",K),s.addEventListener("click",e=>{e.target.closest("[data-menu-close]")?a():e.target.closest("a")&&a({restoreFocus:!1})}),document.addEventListener("keydown",e=>{y()&&(e.key==="Escape"?a():L(s,e))}),window.matchMedia(F).addEventListener("change",e=>{e.matches&&a({restoreFocus:!1})}),window.addEventListener("pageshow",e=>{e.persisted&&a({restoreFocus:!1})}))}const h=new Map;function x(e,t){const n=document.getElementById(e);if(!n||n.open)return;h.set(e,t),a({restoreFocus:!1}),n.showModal(),w();const i=n.querySelector("#lead-name");i&&i.checkVisibility()&&i.focus()}function D(e){A();const t=h.get(e.id);h.delete(e.id),(t&&t.checkVisibility()?t:document.querySelector("[data-menu-open]"))?.focus()}function T(){document.addEventListener("click",e=>{const t=e.target.closest("[data-modal-open]");t&&x(`modal-${t.dataset.modalOpen}`,t)}),document.querySelectorAll("dialog.modal").forEach(e=>{let t=!1;e.addEventListener("pointerdown",n=>{t=n.target===e}),e.addEventListener("click",n=>{(n.target===e&&t||n.target.closest("[data-modal-close]"))&&e.close()}),e.addEventListener("keydown",n=>L(e,n)),e.addEventListener("close",()=>D(e))})}k();B();T();I();const v=document.getElementById("lead-form");v&&M(v);
+</script>
+  <link rel="stylesheet" href="./assets/main-DOLx4Dm2.css">
+  <link rel="stylesheet" href="./assets/layout.css?v=6a6409a68a">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <div class="page-glow" aria-hidden="true"></div>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="header__logo" href="index.html">OnTeam</a>
+      <nav class="header__nav" aria-label="Основная навигация">
+        <a class="nav__link" href="index.html" data-text="OnTeam" aria-current="page">OnTeam</a>
+        <a class="nav__link" href="privacy.html" data-text="Конфиденциальность">Конфиденциальность</a>
+        <a class="nav__link" href="agreement.html" data-text="Лицензия">Лицензия</a>
+        <a class="nav__link" href="terms.html" data-text="Условия">Условия</a>
+        <a class="nav__link" href="support.html" data-text="Поддержка">Поддержка</a>
+      </nav>
+      <button class="btn btn--dark header__download" type="button" data-modal-open="lead"><span class="btn__label">Скачать</span></button>
+      <button class="header__burger" type="button" data-menu-open aria-controls="mobile-menu" aria-expanded="false" aria-label="Открыть меню">
+        <img src="./assets/ic-burger-CY27RroU.svg" width="24" height="24" alt="">
+      </button>
+    </div>
+  </header>
+  <main id="main" class="home">
+    <section class="hero">
+      <div class="container hero__content">
+        <picture class="hero__icon">
+          <source type="image/webp" srcset="./assets/app-icon@1x-Drrd5O1l.webp 80w, ./assets/app-icon@2x-D1WDWjwt.webp 160w" sizes="80px">
+          <img decoding="async" src="./assets/app-icon@1x-Drrd5O1l.webp" srcset="./assets/app-icon@1x-Drrd5O1l.webp 80w, ./assets/app-icon@2x-D1WDWjwt.webp 160w" sizes="80px" width="80" height="80" alt="">
+        </picture>
+        <div class="hero__text">
+          <h1 class="hero__title">OnTeam: мессенджер для бизнеса</h1>
+          <p class="hero__lead">Общайтесь с коллегами, отправляйте им сообщения, файлы и документы в чатах, создавайте каналы и отвечайте в тредах</p>
+        </div>
+        <button class="btn btn--dark" type="button" data-modal-open="lead"><span class="btn__label">Хочу мессенджер</span></button>
+      </div>
+      <div class="hero__stage">
+        <div class="hero__row">
+          <div class="hero__phone hero__phone--3 hero__phone--lg" style="--x: -109.06px; --y: 0px; --z: 1;">
+            <picture class="hero__shadow hero__shadow--cast">
+              <source type="image/webp" srcset="./assets/shadow-cast-lg@1x-Vh7hTbrv.webp 361w, ./assets/shadow-cast-lg@2x-BMWpcyyZ.webp 722w" sizes="361px">
+              <img decoding="async" src="./assets/shadow-cast-lg@1x-Vh7hTbrv.webp" srcset="./assets/shadow-cast-lg@1x-Vh7hTbrv.webp 361w, ./assets/shadow-cast-lg@2x-BMWpcyyZ.webp 722w" sizes="361px" width="361" height="556" alt="" aria-hidden="true">
+            </picture>
+            <picture class="hero__shadow hero__shadow--bottom">
+              <source type="image/webp" srcset="./assets/shadow-bottom-lg@1x-q1PQl40E.webp 234w, ./assets/shadow-bottom-lg@2x-rO02M84e.webp 468w" sizes="234px">
+              <img decoding="async" src="./assets/shadow-bottom-lg@1x-q1PQl40E.webp" srcset="./assets/shadow-bottom-lg@1x-q1PQl40E.webp 234w, ./assets/shadow-bottom-lg@2x-rO02M84e.webp 468w" sizes="234px" width="234" height="101" alt="" aria-hidden="true">
+            </picture>
+            <picture class="hero__shadow hero__shadow--top">
+              <source type="image/webp" srcset="./assets/shadow-top-lg@1x-BvZkXkNi.webp 280w, ./assets/shadow-top-lg@2x-EFd8OjzT.webp 560w" sizes="280px">
+              <img decoding="async" src="./assets/shadow-top-lg@1x-BvZkXkNi.webp" srcset="./assets/shadow-top-lg@1x-BvZkXkNi.webp 280w, ./assets/shadow-top-lg@2x-EFd8OjzT.webp 560w" sizes="280px" width="280" height="71" alt="" aria-hidden="true">
+            </picture>
+            <picture class="hero__device">
+              <source type="image/webp" srcset="./assets/hero-phone-3@1x-DDgyPUy5.webp 254w, ./assets/hero-phone-3@2x-70k1mMQD.webp 508w" sizes="254px">
+              <img decoding="async" src="./assets/hero-phone-3@1x-DDgyPUy5.webp" srcset="./assets/hero-phone-3@1x-DDgyPUy5.webp 254w, ./assets/hero-phone-3@2x-70k1mMQD.webp 508w" sizes="254px" width="254" height="481" alt="Чат «Исследования» в OnTeam" fetchpriority="high">
+            </picture>
+          </div>
+          <div class="hero__phone hero__phone--4 hero__phone--sm" style="--x: 139.32px; --y: 36px; --z: 2;">
+            <picture class="hero__shadow hero__shadow--cast">
+              <source type="image/webp" srcset="./assets/shadow-cast-sm@1x-B1PNCQSp.webp 304w, ./assets/shadow-cast-sm@2x-BquYRdvG.webp 608w" sizes="304px">
+              <img decoding="async" src="./assets/shadow-cast-sm@1x-B1PNCQSp.webp" srcset="./assets/shadow-cast-sm@1x-B1PNCQSp.webp 304w, ./assets/shadow-cast-sm@2x-BquYRdvG.webp 608w" sizes="304px" width="304" height="467" alt="" loading="lazy" aria-hidden="true">
+            </picture>
+            <picture class="hero__shadow hero__shadow--bottom">
+              <source type="image/webp" srcset="./assets/shadow-bottom-sm@1x-DCz8Bxqe.webp 197w, ./assets/shadow-bottom-sm@2x-D5BpzKc3.webp 394w" sizes="197px">
+              <img decoding="async" src="./assets/shadow-bottom-sm@1x-DCz8Bxqe.webp" srcset="./assets/shadow-bottom-sm@1x-DCz8Bxqe.webp 197w, ./assets/shadow-bottom-sm@2x-D5BpzKc3.webp 394w" sizes="197px" width="197" height="86" alt="" loading="lazy" aria-hidden="true">
+            </picture>
+            <picture class="hero__shadow hero__shadow--top">
+              <source type="image/webp" srcset="./assets/shadow-top-sm@1x-CbZTVfHT.webp 238w, ./assets/shadow-top-sm@2x-BpYmAbJZ.webp 476w" sizes="238px">
+              <img decoding="async" src="./assets/shadow-top-sm@1x-CbZTVfHT.webp" srcset="./assets/shadow-top-sm@1x-CbZTVfHT.webp 238w, ./assets/shadow-top-sm@2x-BpYmAbJZ.webp 476w" sizes="238px" width="238" height="60" alt="" loading="lazy" aria-hidden="true">
+            </picture>
+            <picture class="hero__device">
+              <source type="image/webp" srcset="./assets/hero-phone-4@1x-cCRmL2f9.webp 213w, ./assets/hero-phone-4@2x-D5fFLnjF.webp 425w" sizes="213px">
+              <img decoding="async" src="./assets/hero-phone-4@1x-cCRmL2f9.webp" srcset="./assets/hero-phone-4@1x-cCRmL2f9.webp 213w, ./assets/hero-phone-4@2x-D5fFLnjF.webp 425w" sizes="213px" width="213" height="403" alt="Набор сообщения в чате OnTeam" loading="lazy">
+            </picture>
+          </div>
+          <div class="hero__phone hero__phone--2 hero__phone--sm" style="--x: -322.03px; --y: 36px; --z: 3;">
+            <picture class="hero__shadow hero__shadow--cast">
+              <source type="image/webp" srcset="./assets/shadow-cast-sm@1x-B1PNCQSp.webp 304w, ./assets/shadow-cast-sm@2x-BquYRdvG.webp 608w" sizes="304px">
+              <img decoding="async" src="./assets/shadow-cast-sm@1x-B1PNCQSp.webp" srcset="./assets/shadow-cast-sm@1x-B1PNCQSp.webp 304w, ./assets/shadow-cast-sm@2x-BquYRdvG.webp 608w" sizes="304px" width="304" height="467" alt="" loading="lazy" aria-hidden="true">
+            </picture>
+            <picture class="hero__shadow hero__shadow--bottom">
+              <source type="image/webp" srcset="./assets/shadow-bottom-sm@1x-DCz8Bxqe.webp 197w, ./assets/shadow-bottom-sm@2x-D5BpzKc3.webp 394w" sizes="197px">
+              <img decoding="async" src="./assets/shadow-bottom-sm@1x-DCz8Bxqe.webp" srcset="./assets/shadow-bottom-sm@1x-DCz8Bxqe.webp 197w, ./assets/shadow-bottom-sm@2x-D5BpzKc3.webp 394w" sizes="197px" width="197" height="86" alt="" loading="lazy" aria-hidden="true">
+            </picture>
+            <picture class="hero__shadow hero__shadow--top">
+              <source type="image/webp" srcset="./assets/shadow-top-sm@1x-CbZTVfHT.webp 238w, ./assets/shadow-top-sm@2x-BpYmAbJZ.webp 476w" sizes="238px">
+              <img decoding="async" src="./assets/shadow-top-sm@1x-CbZTVfHT.webp" srcset="./assets/shadow-top-sm@1x-CbZTVfHT.webp 238w, ./assets/shadow-top-sm@2x-BpYmAbJZ.webp 476w" sizes="238px" width="238" height="60" alt="" loading="lazy" aria-hidden="true">
+            </picture>
+            <picture class="hero__device">
+              <source type="image/webp" srcset="./assets/hero-phone-2@1x-50hsPMH2.webp 213w, ./assets/hero-phone-2@2x-Dwhqj6Gf.webp 425w" sizes="213px">
+              <img decoding="async" src="./assets/hero-phone-2@1x-50hsPMH2.webp" srcset="./assets/hero-phone-2@1x-50hsPMH2.webp 213w, ./assets/hero-phone-2@2x-Dwhqj6Gf.webp 425w" sizes="213px" width="213" height="403" alt="Личный чат в OnTeam" loading="lazy">
+            </picture>
+          </div>
+          <div class="hero__phone hero__phone--1 hero__phone--sm" style="--x: -535px; --y: 62px; --z: 4;">
+            <picture class="hero__shadow hero__shadow--cast">
+              <source type="image/webp" srcset="./assets/shadow-cast-sm@1x-B1PNCQSp.webp 304w, ./assets/shadow-cast-sm@2x-BquYRdvG.webp 608w" sizes="304px">
+              <img decoding="async" src="./assets/shadow-cast-sm@1x-B1PNCQSp.webp" srcset="./assets/shadow-cast-sm@1x-B1PNCQSp.webp 304w, ./assets/shadow-cast-sm@2x-BquYRdvG.webp 608w" sizes="304px" width="304" height="467" alt="" loading="lazy" aria-hidden="true">
+            </picture>
+            <picture class="hero__shadow hero__shadow--bottom">
+              <source type="image/webp" srcset="./assets/shadow-bottom-sm@1x-DCz8Bxqe.webp 197w, ./assets/shadow-bottom-sm@2x-D5BpzKc3.webp 394w" sizes="197px">
+              <img decoding="async" src="./assets/shadow-bottom-sm@1x-DCz8Bxqe.webp" srcset="./assets/shadow-bottom-sm@1x-DCz8Bxqe.webp 197w, ./assets/shadow-bottom-sm@2x-D5BpzKc3.webp 394w" sizes="197px" width="197" height="86" alt="" loading="lazy" aria-hidden="true">
+            </picture>
+            <picture class="hero__shadow hero__shadow--top">
+              <source type="image/webp" srcset="./assets/shadow-top-sm@1x-CbZTVfHT.webp 238w, ./assets/shadow-top-sm@2x-BpYmAbJZ.webp 476w" sizes="238px">
+              <img decoding="async" src="./assets/shadow-top-sm@1x-CbZTVfHT.webp" srcset="./assets/shadow-top-sm@1x-CbZTVfHT.webp 238w, ./assets/shadow-top-sm@2x-BpYmAbJZ.webp 476w" sizes="238px" width="238" height="60" alt="" loading="lazy" aria-hidden="true">
+            </picture>
+            <picture class="hero__device">
+              <source type="image/webp" srcset="./assets/hero-phone-1@1x-B4EN-Vrw.webp 213w, ./assets/hero-phone-1@2x-CufzWTdk.webp 425w" sizes="213px">
+              <img decoding="async" src="./assets/hero-phone-1@1x-B4EN-Vrw.webp" srcset="./assets/hero-phone-1@1x-B4EN-Vrw.webp 213w, ./assets/hero-phone-1@2x-CufzWTdk.webp 425w" sizes="213px" width="213" height="403" alt="Список чатов OnTeam" loading="lazy">
+            </picture>
+          </div>
+          <div class="hero__phone hero__phone--5 hero__phone--sm" style="--x: 352.29px; --y: 62px; --z: 5;">
+            <picture class="hero__shadow hero__shadow--cast">
+              <source type="image/webp" srcset="./assets/shadow-cast-sm@1x-B1PNCQSp.webp 304w, ./assets/shadow-cast-sm@2x-BquYRdvG.webp 608w" sizes="304px">
+              <img decoding="async" src="./assets/shadow-cast-sm@1x-B1PNCQSp.webp" srcset="./assets/shadow-cast-sm@1x-B1PNCQSp.webp 304w, ./assets/shadow-cast-sm@2x-BquYRdvG.webp 608w" sizes="304px" width="304" height="467" alt="" loading="lazy" aria-hidden="true">
+            </picture>
+            <picture class="hero__shadow hero__shadow--bottom">
+              <source type="image/webp" srcset="./assets/shadow-bottom-sm@1x-DCz8Bxqe.webp 197w, ./assets/shadow-bottom-sm@2x-D5BpzKc3.webp 394w" sizes="197px">
+              <img decoding="async" src="./assets/shadow-bottom-sm@1x-DCz8Bxqe.webp" srcset="./assets/shadow-bottom-sm@1x-DCz8Bxqe.webp 197w, ./assets/shadow-bottom-sm@2x-D5BpzKc3.webp 394w" sizes="197px" width="197" height="86" alt="" loading="lazy" aria-hidden="true">
+            </picture>
+            <picture class="hero__shadow hero__shadow--top">
+              <source type="image/webp" srcset="./assets/shadow-top-sm@1x-CbZTVfHT.webp 238w, ./assets/shadow-top-sm@2x-BpYmAbJZ.webp 476w" sizes="238px">
+              <img decoding="async" src="./assets/shadow-top-sm@1x-CbZTVfHT.webp" srcset="./assets/shadow-top-sm@1x-CbZTVfHT.webp 238w, ./assets/shadow-top-sm@2x-BpYmAbJZ.webp 476w" sizes="238px" width="238" height="60" alt="" loading="lazy" aria-hidden="true">
+            </picture>
+            <picture class="hero__device">
+              <source type="image/webp" srcset="./assets/hero-phone-5@1x-CaiIcZ--.webp 213w, ./assets/hero-phone-5@2x-vMOyTV0d.webp 425w" sizes="213px">
+              <img decoding="async" src="./assets/hero-phone-5@1x-CaiIcZ--.webp" srcset="./assets/hero-phone-5@1x-CaiIcZ--.webp 213w, ./assets/hero-phone-5@2x-vMOyTV0d.webp 425w" sizes="213px" width="213" height="403" alt="Поиск по чатам и каналам OnTeam" loading="lazy">
+            </picture>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section features" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section-head section-head--features">
+          <div class="section-head__titles">
+            <p class="section-head__eyebrow">Возможности приложения</p>
+            <h2 class="section-head__title" id="features-title">Корпоративный <br>мессенджер</h2>
+          </div>
+          <p class="section-head__text">OnTeam&nbsp;помогает решать повседневные рабочие задачи в одном приложении: переписываться с коллегами, пересылать им сообщения и файлы, общаться в групповых чатах</p>
+        </div>
+        <ul class="features__grid">
+          <li class="features__card">
+            <span class="icon-circle"><img src="./assets/ic-users-Cbx--XnW.svg" width="28" height="28" alt=""></span>
+            <div class="features__body">
+              <h3 class="features__title">Находите <br class="br-md">коллег</h3>
+              <p class="features__text">Все коллеги собраны в мессенджере. Вы можете быстро найти нужного сотрудника</p>
+            </div>
+          </li>
+          <li class="features__card">
+            <span class="icon-circle"><img src="./assets/ic-edit-square-B1wJ1r-j.svg" width="28" height="28" alt=""></span>
+            <div class="features__body">
+              <h3 class="features__title">Обсуждайте <br class="br-md">задачи</h3>
+              <p class="features__text">Пишите коллегам лично и в групповых чатах. Сообщения можно отправлять по расписанию.</p>
+            </div>
+          </li>
+          <li class="features__card">
+            <span class="icon-circle"><img src="./assets/ic-bookmark-Bv4pjTPb.svg" width="28" height="28" alt=""></span>
+            <div class="features__body">
+              <h3 class="features__title">Не теряйте <br class="br-md">важное</h3>
+              <p class="features__text">Создавайте каналы для новостей и ветки для отдельных тем. Важные чаты можно закреплять и распределять по папкам</p>
+            </div>
+          </li>
+          <li class="features__card">
+            <span class="icon-circle"><img src="./assets/ic-bell-2XlS1aSN.svg" width="28" height="28" alt=""></span>
+            <div class="features__body">
+              <h3 class="features__title">Регулируйте уведомления</h3>
+              <p class="features__text">Настраивайте уведомления под свой рабочий ритм. Например, отключить</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section theme" aria-labelledby="theme-title">
+      <div class="container">
+        <div class="theme__card">
+          <div class="theme__glow" aria-hidden="true"></div>
+          <div class="section-head section-head--theme">
+            <div class="section-head__titles">
+              <p class="section-head__eyebrow">Темная тема</p>
+              <h2 class="section-head__title" id="theme-title">Оформление <br>под настроение</h2>
+            </div>
+            <p class="section-head__text">Выбирайте светлую или тёмную тему. Или позвольте OnTeam следовать оформлению системы</p>
+          </div>
+          <picture class="theme__phones">
+            <source type="image/webp" srcset="./assets/theme-phones@1x-CNqC83j4.webp 875w, ./assets/theme-phones@2x-Drw8BytO.webp 1750w" sizes="(max-width: 767px) 447px, 875px">
+            <img decoding="async" src="./assets/theme-phones@1x-CNqC83j4.webp" srcset="./assets/theme-phones@1x-CNqC83j4.webp 875w, ./assets/theme-phones@2x-Drw8BytO.webp 1750w" sizes="(max-width: 767px) 447px, 875px" width="875" height="446" alt="OnTeam в тёмной теме: чат и список чатов" loading="lazy">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="section onteam" aria-labelledby="onteam-title">
+      <div class="container">
+        <div class="section-head section-head--onteam">
+          <div class="section-head__titles">
+            <p class="section-head__eyebrow">Корпоративный месседжер</p>
+            <h2 class="section-head__title" id="onteam-title">OnTeam</h2>
+          </div>
+          <p class="section-head__text">Мессенджер для работы: все ваши коллеги в одном приложении</p>
+        </div>
+        <div class="onteam__body">
+          <ul class="onteam__list">
+            <li class="onteam__item">
+              <span class="icon-circle"><img src="./assets/ic-bookmark-Bv4pjTPb.svg" width="28" height="28" alt=""></span>
+              <div class="onteam__text-wrap">
+                <h3 class="onteam__title">Не теряйте важное</h3>
+                <p class="onteam__text">Общайтесь с коллегами из вашего отдела и создавайте чаты под проекты</p>
+              </div>
+            </li>
+            <li class="onteam__item">
+              <span class="icon-circle"><img src="./assets/ic-messages-DlTLZmH_.svg" width="28" height="28" alt=""></span>
+              <div class="onteam__text-wrap">
+                <h3 class="onteam__title">Сообщения и треды</h3>
+                <p class="onteam__text">Обсуждайте общие вопросы в чатах и тредах</p>
+              </div>
+            </li>
+            <li class="onteam__item">
+              <span class="icon-circle"><img src="./assets/ic-message-IdCEvS_8.svg" width="28" height="28" alt=""></span>
+              <div class="onteam__text-wrap">
+                <h3 class="onteam__title">Личные чаты</h3>
+                <p class="onteam__text">Переписывайтесь и ставьте реакции</p>
+              </div>
+            </li>
+            <li class="onteam__item">
+              <span class="icon-circle"><img src="./assets/ic-search-pqtayHtB.svg" width="28" height="28" alt=""></span>
+              <div class="onteam__text-wrap">
+                <h3 class="onteam__title">Удобный поиск</h3>
+                <p class="onteam__text">Находите чаты и каналы по названию, а коллег — по имени и фамилии</p>
+              </div>
+            </li>
+          </ul>
+          <div class="onteam__media">
+            <picture class="onteam__chats">
+              <source type="image/webp" srcset="./assets/onteam-chats@1x-24685641fe.webp 550w, ./assets/onteam-chats@2x-31f1b92dbc.webp 1100w" sizes="550px">
+              <img decoding="async" src="./assets/onteam-chats@1x-24685641fe.webp" srcset="./assets/onteam-chats@1x-24685641fe.webp 550w, ./assets/onteam-chats@2x-31f1b92dbc.webp 1100w" sizes="550px" width="550" height="691" alt="Список обсуждений OnTeam с реакциями на сообщение" loading="lazy">
+            </picture>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section">
+      <div class="container">
+        <section class="docs" aria-labelledby="docs-title">
+          <h2 class="visually-hidden" id="docs-title">Документы</h2>
+          <ul class="docs__list">
+            <li>
+              <a class="doc-card" href="terms.html">
+                <span class="doc-card__icon"><img src="./assets/ic-question-round-DoX0bzm0.svg" width="28" height="28" alt=""></span>
+                <span class="doc-card__body">
+                  <span class="doc-card__title">Условия использования</span>
+                  <span class="doc-card__text">Основные условия использования корпоративного мессенджера OnTeam</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="doc-card" href="support.html">
+                <span class="doc-card__icon"><img src="./assets/ic-headphones-support-rFlMaOmg.svg" width="28" height="28" alt=""></span>
+                <span class="doc-card__body">
+                  <span class="doc-card__title">Поддержка</span>
+                  <span class="doc-card__text">Поможем разобраться со входом, чатами, сообщениями и работой OnTeam.</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="doc-card" href="privacy.html">
+                <span class="doc-card__icon"><img src="./assets/ic-incognito-BPkBWG-0.svg" width="28" height="28" alt=""></span>
+                <span class="doc-card__body">
+                  <span class="doc-card__title">Политика конфиденциальности</span>
+                  <span class="doc-card__text">Как OnTeam обрабатывает данные пользователей и обеспечивает работу корпоративного мессенджера</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="doc-card" href="agreement.html">
+                <span class="doc-card__icon"><img src="./assets/ic-document-text-CcpHK9o1.svg" width="28" height="28" alt=""></span>
+                <span class="doc-card__body">
+                  <span class="doc-card__title">Лицензионное соглашение</span>
+                  <span class="doc-card__text">Информация о праве использования корпоративного мессенджера OnTeam</span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__copy">© 2026 OnTeam</p>
+      <nav class="footer__nav" aria-label="Навигация в подвале">
+        <a class="nav__link" href="index.html" data-text="OnTeam" aria-current="page">OnTeam</a>
+        <a class="nav__link" href="privacy.html" data-text="Конфиденциальность">Конфиденциальность</a>
+        <a class="nav__link" href="agreement.html" data-text="Лицензия">Лицензия</a>
+        <a class="nav__link" href="terms.html" data-text="Условия">Условия</a>
+        <a class="nav__link" href="support.html" data-text="Поддержка">Поддержка</a>
+      </nav>
+    </div>
+  </footer>
+  <div class="menu" id="mobile-menu" hidden>
+    <div class="menu__overlay" data-menu-close></div>
+    <div class="menu__panel" role="dialog" aria-modal="true" aria-label="Меню">
+      <button class="menu__close" type="button" data-menu-close aria-label="Закрыть меню">
+        <img src="./assets/ic-close-C1zHbGpJ.svg" width="23" height="23" alt="">
+      </button>
+      <div class="menu__body">
+        <picture class="menu__icon">
+          <source type="image/webp" srcset="./assets/app-icon@1x-Drrd5O1l.webp 80w, ./assets/app-icon@2x-D1WDWjwt.webp 160w" sizes="32px">
+          <img decoding="async" src="./assets/app-icon@1x-Drrd5O1l.webp" srcset="./assets/app-icon@1x-Drrd5O1l.webp 80w, ./assets/app-icon@2x-D1WDWjwt.webp 160w" sizes="32px" width="32" height="32" alt="">
+        </picture>
+        <nav class="menu__nav" aria-label="Меню">
+          <a class="nav__link menu__link" href="index.html" data-text="OnTeam" aria-current="page">OnTeam<img class="nav__arrow" src="./assets/ic-arrow-ne-DCdm4BQB.svg" width="16" height="16" alt=""></a>
+          <a class="nav__link menu__link" href="privacy.html" data-text="Конфиденциальность">Конфиденциальность<img class="nav__arrow" src="./assets/ic-arrow-ne-DCdm4BQB.svg" width="16" height="16" alt=""></a>
+          <a class="nav__link menu__link" href="agreement.html" data-text="Лицензия">Лицензия<img class="nav__arrow" src="./assets/ic-arrow-ne-DCdm4BQB.svg" width="16" height="16" alt=""></a>
+          <a class="nav__link menu__link" href="terms.html" data-text="Условия">Условия<img class="nav__arrow" src="./assets/ic-arrow-ne-DCdm4BQB.svg" width="16" height="16" alt=""></a>
+          <a class="nav__link menu__link" href="support.html" data-text="Поддержка">Поддержка<img class="nav__arrow" src="./assets/ic-arrow-ne-DCdm4BQB.svg" width="16" height="16" alt=""></a>
+        </nav>
+      </div>
+      <button class="btn btn--dark menu__download" type="button" data-modal-open="lead"><span class="btn__label">Скачать</span></button>
+    </div>
+  </div>
+  <dialog class="modal" id="modal-lead" aria-labelledby="modal-lead-title">
+    <div class="modal__panel">
+      <button class="modal__close" type="button" data-modal-close aria-label="Закрыть">
+        <img src="./assets/ic-close-C1zHbGpJ.svg" width="23" height="23" alt="">
+      </button>
+      <form class="modal__form" id="lead-form" novalidate>
+        <div class="modal__head">
+          <h2 class="modal__title" id="modal-lead-title">Хочу стать клиентом</h2>
+          <p class="modal__text">Оставьте контакты, и мы расскажем, как подключить OnTeam для вашей команды.</p>
+        </div>
+        <div class="modal__fields">
+          <div class="field">
+            <label class="field__label" for="lead-name">Ваше имя *</label>
+            <input class="field__input" id="lead-name" name="name" type="text" autocomplete="name" placeholder="Введите имя" required>
+          </div>
+          <div class="field">
+            <label class="field__label" for="lead-email">Электронная почта *</label>
+            <input class="field__input" id="lead-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Введите email" aria-describedby="lead-email-error" required>
+            <p class="field__error" id="lead-email-error" hidden>Введите корректный e-mail</p>
+          </div>
+        </div>
+        <button class="modal__submit" type="submit" aria-describedby="lead-hint" disabled><span class="btn__label">Отправить заявку</span></button>
+        <p class="visually-hidden" id="lead-hint">Чтобы отправить заявку, укажите имя и корректный адрес электронной почты.</p>
+        <p class="modal__text">Нажимая «Отправить заявку», вы соглашаетесь на обработку персональных данных в соответствии с <a class="modal__link" href="privacy.html">Политикой конфиденциальности</a>.</p>
+      </form>
+      <div class="modal__success" role="status" hidden>
+        <span class="modal__check">
+          <img src="./assets/ic-check-DDJsIHdH.svg" width="28" height="28" alt="">
+        </span>
+        <div class="modal__head">
+          <h2 class="modal__title" id="modal-success-title" tabindex="-1">Заявка отправлена</h2>
+          <p class="modal__text">Спасибо! Мы свяжемся с вами по указанной почте и расскажем, как подключить OnTeam для вашей команды.</p>
+        </div>
+        <button class="btn btn--dark modal__done" type="button" data-modal-close><span class="btn__label">Понятно</span></button>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>

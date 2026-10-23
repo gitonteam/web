@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Поддержка — OnTeam</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon-C19bd5fR.svg">
+  <script type="module">(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))i(r);new MutationObserver(r=>{for(const o of r)if(o.type==="childList")for(const c of o.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&i(c)}).observe(document,{childList:!0,subtree:!0});function n(r){const o={};return r.integrity&&(o.integrity=r.integrity),r.referrerPolicy&&(o.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?o.credentials="include":r.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function i(r){if(r.ep)return;r.ep=!0;const o=n(r);fetch(r.href,o)}})();function k(){document.addEventListener("click",e=>{if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;const t=e.target.closest('a[href^="#"]');if(!t)return;const n=document.getElementById(decodeURIComponent(t.hash.slice(1)));if(n){e.preventDefault(),n.scrollIntoView();try{history.pushState(null,"",t.hash)}catch{}window.dispatchEvent(new HashChangeEvent("hashchange"))}})}const q=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;function b(e){return q.test(e.trim())}function O(e){return new Promise(t=>setTimeout(t,600))}function M(e){const t=e.querySelector("#lead-name"),n=e.querySelector("#lead-email"),i=e.querySelector('button[type="submit"]'),r=e.closest("dialog"),o=r.querySelector(".modal__success"),c=r.querySelector("#modal-success-title"),p=e.querySelector("#lead-email-error"),g=()=>t.value.trim()!==""&&b(n.value),f=()=>{i.getAttribute("aria-busy")!=="true"&&(i.disabled=!g())},m=d=>{p.hidden=!d,d?n.setAttribute("aria-invalid","true"):n.removeAttribute("aria-invalid")},E=()=>n.value.trim()!==""&&!b(n.value);n.addEventListener("blur",()=>m(E())),n.addEventListener("input",()=>{!p.hidden&&!E()&&m(!1)}),e.addEventListener("input",f),e.addEventListener("submit",async d=>{d.preventDefault(),g()&&(i.disabled=!0,i.setAttribute("aria-busy","true"),await O({name:t.value.trim(),email:n.value.trim()}),i.removeAttribute("aria-busy"),e.hidden=!0,o.hidden=!1,c.focus())}),r.addEventListener("close",()=>{o.hidden||(e.reset(),e.hidden=!1,o.hidden=!0,m(!1),f())}),f()}function I(){const e=[...document.querySelectorAll(".legal__toc-link")];if(e.length===0)return;const t=n=>{const i=e.find(r=>r.hash===n)??e[0];e.forEach(r=>r.toggleAttribute("aria-current",r===i)),i.setAttribute("aria-current","true")};t(location.hash),window.addEventListener("hashchange",()=>t(location.hash))}const P='a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])';function L(e,t){if(t.key!=="Tab")return;const n=[...e.querySelectorAll(P)].filter(c=>c.checkVisibility());if(n.length===0)return;const i=n[0],r=n[n.length-1],o=e.contains(document.activeElement);t.shiftKey&&(document.activeElement===i||!o)?(t.preventDefault(),r.focus()):!t.shiftKey&&(document.activeElement===r||!o)&&(t.preventDefault(),i.focus())}let u=0;function w(){if(u===0){const e=document.documentElement;e.style.setProperty("--scrollbar-width",`${window.innerWidth-e.clientWidth}px`),e.classList.add("is-scroll-locked")}u+=1}function A(){if(u!==0&&(u-=1,u===0)){const e=document.documentElement;e.classList.remove("is-scroll-locked"),e.style.removeProperty("--scrollbar-width")}}const F="(min-width: 1280px)";let s,l;const S=()=>[...document.body.children].filter(e=>e!==s&&e.tagName!=="DIALOG"&&e.tagName!=="SCRIPT");function y(){return!!(s&&!s.hidden)}function K(){!s||y()||(s.hidden=!1,l?.setAttribute("aria-expanded","true"),S().forEach(e=>e.setAttribute("inert","")),w(),s.querySelector(".menu__close")?.focus())}function a({restoreFocus:e=!0}={}){y()&&(s.hidden=!0,l?.setAttribute("aria-expanded","false"),S().forEach(t=>t.removeAttribute("inert")),A(),e&&l?.focus())}function B(){s=document.getElementById("mobile-menu"),l=document.querySelector("[data-menu-open]"),!(!s||!l)&&(l.addEventListener("click",K),s.addEventListener("click",e=>{e.target.closest("[data-menu-close]")?a():e.target.closest("a")&&a({restoreFocus:!1})}),document.addEventListener("keydown",e=>{y()&&(e.key==="Escape"?a():L(s,e))}),window.matchMedia(F).addEventListener("change",e=>{e.matches&&a({restoreFocus:!1})}),window.addEventListener("pageshow",e=>{e.persisted&&a({restoreFocus:!1})}))}const h=new Map;function x(e,t){const n=document.getElementById(e);if(!n||n.open)return;h.set(e,t),a({restoreFocus:!1}),n.showModal(),w();const i=n.querySelector("#lead-name");i&&i.checkVisibility()&&i.focus()}function D(e){A();const t=h.get(e.id);h.delete(e.id),(t&&t.checkVisibility()?t:document.querySelector("[data-menu-open]"))?.focus()}function T(){document.addEventListener("click",e=>{const t=e.target.closest("[data-modal-open]");t&&x(`modal-${t.dataset.modalOpen}`,t)}),document.querySelectorAll("dialog.modal").forEach(e=>{let t=!1;e.addEventListener("pointerdown",n=>{t=n.target===e}),e.addEventListener("click",n=>{(n.target===e&&t||n.target.closest("[data-modal-close]"))&&e.close()}),e.addEventListener("keydown",n=>L(e,n)),e.addEventListener("close",()=>D(e))})}k();B();T();I();const v=document.getElementById("lead-form");v&&M(v);
+</script>
+  <link rel="stylesheet" href="./assets/main-DOLx4Dm2.css">
+  <link rel="stylesheet" href="./assets/layout.css?v=6a6409a68a">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <div class="page-glow" aria-hidden="true"></div>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="header__logo" href="index.html">OnTeam</a>
+      <nav class="header__nav" aria-label="Основная навигация">
+        <a class="nav__link" href="index.html" data-text="OnTeam">OnTeam</a>
+        <a class="nav__link" href="privacy.html" data-text="Конфиденциальность">Конфиденциальность</a>
+        <a class="nav__link" href="agreement.html" data-text="Лицензия">Лицензия</a>
+        <a class="nav__link" href="terms.html" data-text="Условия">Условия</a>
+        <a class="nav__link" href="support.html" data-text="Поддержка" aria-current="page">Поддержка</a>
+      </nav>
+      <button class="btn btn--dark header__download" type="button" data-modal-open="lead"><span class="btn__label">Скачать</span></button>
+      <button class="header__burger" type="button" data-menu-open aria-controls="mobile-menu" aria-expanded="false" aria-label="Открыть меню">
+        <img src="./assets/ic-burger-CY27RroU.svg" width="24" height="24" alt="">
+      </button>
+    </div>
+  </header>
+  <main id="main" class="legal">
+    <div class="container">
+      <section class="legal__hero">
+        <p class="legal__crumb">Документы и помощь</p>
+        <h1 class="legal__title">Поддержка</h1>
+        <p class="legal__lead">Поможем разобраться со входом, чатами, сообщениями и работой OnTeam.</p>
+
+      </section>
+      <div class="legal__main">
+        <nav class="legal__toc" aria-label="Навигация по разделам">
+          <p class="legal__toc-title">Навигация по разделам</p>
+          <ul class="legal__toc-list">
+            <li><a class="legal__toc-link" href="#kak-svyazatsya" aria-current="true">Как связаться</a></li>
+            <li><a class="legal__toc-link" href="#chto-napisat-v-obrashchenii">Что написать в обращении</a></li>
+            <li><a class="legal__toc-link" href="#voprosy-uchetnoy-zapisi">Вопросы учётной записи</a></li>
+          </ul>
+        </nav>
+        <article class="legal__content">
+          <section class="legal__section" id="kak-svyazatsya">
+            <h2>Как связаться</h2>
+            <p>Если у вас возникли вопросы или трудности с использованием OnTeam, обратитесь в службу поддержки.</p>
+            <p>Контакт поддержки: <a href="mailto:contact@onteam-support.com">contact@onteam-support.com</a></p>
+          </section>
+          <section class="legal__section" id="chto-napisat-v-obrashchenii">
+            <h2>Что написать в обращении</h2>
+            <p>Чтобы мы быстрее разобрались в проблеме, укажите:</p>
+            <ul>
+              <li>Модель устройства и версию операционной системы.</li>
+              <li>Версию приложения OnTeam.</li>
+              <li>Что вы пытались сделать, какого результата ожидали и что произошло.</li>
+              <li>Когда возникла проблема и повторяется ли она.</li>
+              <li>Текст ошибки или скриншот, если это поможет разобраться.</li>
+            </ul>
+            <p>Не отправляйте пароли и коды подтверждения. Перед отправкой скриншота скройте конфиденциальные сообщения, персональные данные коллег и другую информацию, не относящуюся к проблеме.</p>
+            <p>Срок ответа: 2 рабочих дня.</p>
+          </section>
+          <section class="legal__section" id="voprosy-uchetnoy-zapisi">
+            <h2>Вопросы учётной записи</h2>
+            <p>Если вы не можете войти в OnTeam, найти коллегу или получить доступ к рабочему чату, обратитесь к администратору вашей организации.</p>
+            <p>По вопросам работы приложения и технических ошибок обращайтесь в службу поддержки OnTeam.</p>
+          </section>
+        </article>
+      </div>
+    </div>
+    <div class="section legal__docs">
+      <div class="container">
+        <section class="docs" aria-labelledby="docs-title">
+          <h2 class="visually-hidden" id="docs-title">Документы</h2>
+          <ul class="docs__list">
+            <li>
+              <a class="doc-card" href="terms.html">
+                <span class="doc-card__icon"><img src="./assets/ic-question-round-DoX0bzm0.svg" width="28" height="28" alt=""></span>
+                <span class="doc-card__body">
+                  <span class="doc-card__title">Условия использования</span>
+                  <span class="doc-card__text">Основные условия использования корпоративного мессенджера OnTeam</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="doc-card" href="support.html">
+                <span class="doc-card__icon"><img src="./assets/ic-headphones-support-rFlMaOmg.svg" width="28" height="28" alt=""></span>
+                <span class="doc-card__body">
+                  <span class="doc-card__title">Поддержка</span>
+                  <span class="doc-card__text">Поможем разобраться со входом, чатами, сообщениями и работой OnTeam.</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="doc-card" href="privacy.html">
+                <span class="doc-card__icon"><img src="./assets/ic-incognito-BPkBWG-0.svg" width="28" height="28" alt=""></span>
+                <span class="doc-card__body">
+                  <span class="doc-card__title">Политика конфиденциальности</span>
+                  <span class="doc-card__text">Как OnTeam обрабатывает данные пользователей и обеспечивает работу корпоративного мессенджера</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="doc-card" href="agreement.html">
+                <span class="doc-card__icon"><img src="./assets/ic-document-text-CcpHK9o1.svg" width="28" height="28" alt=""></span>
+                <span class="doc-card__body">
+                  <span class="doc-card__title">Лицензионное соглашение</span>
+                  <span class="doc-card__text">Информация о праве использования корпоративного мессенджера OnTeam</span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__copy">© 2026 OnTeam</p>
+      <nav class="footer__nav" aria-label="Навигация в подвале">
+        <a class="nav__link" href="index.html" data-text="OnTeam">OnTeam</a>
+        <a class="nav__link" href="privacy.html" data-text="Конфиденциальность">Конфиденциальность</a>
+        <a class="nav__link" href="agreement.html" data-text="Лицензия">Лицензия</a>
+        <a class="nav__link" href="terms.html" data-text="Условия">Условия</a>
+        <a class="nav__link" href="support.html" data-text="Поддержка" aria-current="page">Поддержка</a>
+      </nav>
+    </div>
+  </footer>
+  <div class="menu" id="mobile-menu" hidden>
+    <div class="menu__overlay" data-menu-close></div>
+    <div class="menu__panel" role="dialog" aria-modal="true" aria-label="Меню">
+      <button class="menu__close" type="button" data-menu-close aria-label="Закрыть меню">
+        <img src="./assets/ic-close-C1zHbGpJ.svg" width="23" height="23" alt="">
+      </button>
+      <div class="menu__body">
+        <picture class="menu__icon">
+          <source type="image/webp" srcset="./assets/app-icon@1x-Drrd5O1l.webp 80w, ./assets/app-icon@2x-D1WDWjwt.webp 160w" sizes="32px">
+          <img decoding="async" src="./assets/app-icon@1x-Drrd5O1l.webp" srcset="./assets/app-icon@1x-Drrd5O1l.webp 80w, ./assets/app-icon@2x-D1WDWjwt.webp 160w" sizes="32px" width="32" height="32" alt="">
+        </picture>
+        <nav class="menu__nav" aria-label="Меню">
+          <a class="nav__link menu__link" href="index.html" data-text="OnTeam">OnTeam<img class="nav__arrow" src="./assets/ic-arrow-ne-DCdm4BQB.svg" width="16" height="16" alt=""></a>
+          <a class="nav__link menu__link" href="privacy.html" data-text="Конфиденциальность">Конфиденциальность<img class="nav__arrow" src="./assets/ic-arrow-ne-DCdm4BQB.svg" width="16" height="16" alt=""></a>
+          <a class="nav__link menu__link" href="agreement.html" data-text="Лицензия">Лицензия<img class="nav__arrow" src="./assets/ic-arrow-ne-DCdm4BQB.svg" width="16" height="16" alt=""></a>
+          <a class="nav__link menu__link" href="terms.html" data-text="Условия">Условия<img class="nav__arrow" src="./assets/ic-arrow-ne-DCdm4BQB.svg" width="16" height="16" alt=""></a>
+          <a class="nav__link menu__link" href="support.html" data-text="Поддержка" aria-current="page">Поддержка<img class="nav__arrow" src="./assets/ic-arrow-ne-DCdm4BQB.svg" width="16" height="16" alt=""></a>
+        </nav>
+      </div>
+      <button class="btn btn--dark menu__download" type="button" data-modal-open="lead"><span class="btn__label">Скачать</span></button>
+    </div>
+  </div>
+  <dialog class="modal" id="modal-lead" aria-labelledby="modal-lead-title">
+    <div class="modal__panel">
+      <button class="modal__close" type="button" data-modal-close aria-label="Закрыть">
+        <img src="./assets/ic-close-C1zHbGpJ.svg" width="23" height="23" alt="">
+      </button>
+      <form class="modal__form" id="lead-form" novalidate>
+        <div class="modal__head">
+          <h2 class="modal__title" id="modal-lead-title">Хочу стать клиентом</h2>
+          <p class="modal__text">Оставьте контакты, и мы расскажем, как подключить OnTeam для вашей команды.</p>
+        </div>
+        <div class="modal__fields">
+          <div class="field">
+            <label class="field__label" for="lead-name">Ваше имя *</label>
+            <input class="field__input" id="lead-name" name="name" type="text" autocomplete="name" placeholder="Введите имя" required>
+          </div>
+          <div class="field">
+            <label class="field__label" for="lead-email">Электронная почта *</label>
+            <input class="field__input" id="lead-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Введите email" aria-describedby="lead-email-error" required>
+            <p class="field__error" id="lead-email-error" hidden>Введите корректный e-mail</p>
+          </div>
+        </div>
+        <button class="modal__submit" type="submit" aria-describedby="lead-hint" disabled><span class="btn__label">Отправить заявку</span></button>
+        <p class="visually-hidden" id="lead-hint">Чтобы отправить заявку, укажите имя и корректный адрес электронной почты.</p>
+        <p class="modal__text">Нажимая «Отправить заявку», вы соглашаетесь на обработку персональных данных в соответствии с <a class="modal__link" href="privacy.html">Политикой конфиденциальности</a>.</p>
+      </form>
+      <div class="modal__success" role="status" hidden>
+        <span class="modal__check">
+          <img src="./assets/ic-check-DDJsIHdH.svg" width="28" height="28" alt="">
+        </span>
+        <div class="modal__head">
+          <h2 class="modal__title" id="modal-success-title" tabindex="-1">Заявка отправлена</h2>
+          <p class="modal__text">Спасибо! Мы свяжемся с вами по указанной почте и расскажем, как подключить OnTeam для вашей команды.</p>
+        </div>
+        <button class="btn btn--dark modal__done" type="button" data-modal-close><span class="btn__label">Понятно</span></button>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>
